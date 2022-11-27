@@ -1,6 +1,6 @@
 from mido import MidiFile
 
-mid = MidiFile('canonpiano.mid', clip=True)
+mid = MidiFile('haydn_sq6.mid', clip=True)
 print(mid)
 
 for track in mid.tracks:
@@ -13,8 +13,8 @@ for track in mid.tracks:
 #     print(msg)
 
 print(len(mid.tracks[1]))
-for i in range(1,10):
+for i in range(1,20):
     print(mid.tracks[1][i])
-for msg in mid.tracks[1]:
-    print(msg)
-    break
+# for msg in mid.tracks[1]:
+#     print(msg)
+#     break
