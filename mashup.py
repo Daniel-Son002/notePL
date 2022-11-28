@@ -1,11 +1,37 @@
-from mido import Message, MidiFile, MidiTrack
+from midiutil.MidiFile import MIDIFile
 
-mid = MidiFile()
-track = MidiTrack()
-mid.tracks.append(track)
+mf = MIDIFile(1) 
+track = 0
+time = 0
+mf.addTrackName(track, time, "Sample Track")
+mf.addTempo(track, time, 120)
+channel = 0
+volume = 100
+duration = 1
+old_pitch = 0
 
-track.append(Message('program_change', program=12, time=0))
-track.append(Message('note_on', note=64, velocity=64, time=32))
-track.append(Message('note_off', note=64, velocity=127, time=32))
+sentence = 'Hello world! This my CS 252 project!'
+lst = sentence.split(' ')
 
-mid.save('new_song.mid')
+for word in lst:
+    for char in word:
+        curr_pitch = (ord(char) + 60) % 88
+        if (curr_pitch <= 90 and curr_pitch >= 65) or (curr_pitch >= 97 and curr_pitch <= 122):
+            pitch = old_pitch + (curr_pitch - old_pitch)
+            mf.addNote(track, channel, pitch, time, duration, volume)
+        elif curr_pitch >= 91:
+            pitch1 = curr_pitch // 2 - 2
+            mf.addNote(track, channel, pitch1, time, duration, volume)
+            pitch2 = curr_pitch // 2 + 2
+            mf.addNote(track, channel, pitch2, time, duration, volume)
+        else:
+            curr_pitch += 60
+            pitch1 = curr_pitch // 2 - 2
+            mf.addNote(track, channel, pitch1, time, duration, volume)
+            pitch2 = curr_pitch // 2 + 2
+            mf.addNote(track, channel, pitch2, time, duration, volume)
+        time += 1
+        old_pitch = curr_pitch
+
+with open("output.mid", 'wb') as outf:
+    mf.writeFile(outf)

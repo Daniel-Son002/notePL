@@ -29,4 +29,5 @@ with open(sys.argv[1], 'r') as file:
         parts = line.split()
         mod = importlib.import_module(parts[0])
         args, kwargs = get_args(parts[2:])
+        print(parts[1], args)
         getattr(mod, parts[1])(*args, **kwargs)

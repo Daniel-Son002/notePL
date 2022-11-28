@@ -7,3 +7,5 @@ module1 mul_num 4.0 3 2 type=float
 module1 mul_num 4.0 0.25 type=float
 module1 mul_num 10 2 type=int
 module1 div_num 9 3 type=int
+
+module1 print_str Hello world! This my CS 252 project!!
