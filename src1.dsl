@@ -1,5 +1,5 @@
 # src1.dsl
-module1 concat_str CS252
+module1 concat_str CS 252
 
 module1 add_num 1 2 3 5 6 10 2 5 1 3 type=int
 # module1 add_num 1 2 3.0 type=float

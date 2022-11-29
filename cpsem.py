@@ -2,7 +2,7 @@ from mido import MidiFile
 import mido
 
 
-mid = MidiFile('<function add_num at 0x10cb965e0>.mid', clip=True)
+mid = MidiFile('add_num.mid', clip=True)
 print(mid)
 # print(type(mid.tracks))
 # print(type(mid.tracks[1]))
@@ -20,7 +20,7 @@ for i, track in enumerate(mid.tracks):
     for msg in track:
         if type(msg) == mido.messages.messages.Message:
             try:
-                print(msg, msg.note)
+                print(msg.note)
             except:
                 print(msg)
         else:
