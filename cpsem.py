@@ -2,8 +2,8 @@ from mido import MidiFile
 import mido
 
 
-mid = MidiFile('midi_files/mary.mid', clip=True)
-# print(type(mid))
+mid = MidiFile('<function add_num at 0x10cb965e0>.mid', clip=True)
+print(mid)
 # print(type(mid.tracks))
 # print(type(mid.tracks[1]))
 # print(type(mid.tracks[1][5]))
