@@ -8,7 +8,6 @@ def concat_str(*args, **kwargs):
     start_pitch = 60
     lst_to_mid(args, 'concat_str', start_pitch)
     kwargs_list = ['%s=%s' % (k, kwargs[k]) for k in kwargs]
-
     print(''.join(args), ','.join(kwargs_list))
 
 def print_str(*args, **kwargs):
