@@ -36,6 +36,12 @@ FLAT_KEY = {1: F_KEY, 2: Bb_KEY, 3: Eb_KEY, 4: Ab_KEY}
 def rand_sign(x):
     return 1*x if random.random() < 0.5 else -1 * x
 
+def validIntervals(note1, note2):
+    valid = [0, 4, 5, 7, 9, 12]
+    if (note2 - note1) % 12 in valid:
+        return True
+    else:
+        return False
 
 def find_key(start):
     if start % 12 == 0:
@@ -120,12 +126,18 @@ class global_funcs():
                     if 60 - lower_old > 2 and lower_old - 36 > 2:
                         if (lower_old + -1 * move) % 12 in notes:
                             MyMIDI.addNote(lower, channel, lower_old + -1 * move, time, duration, volume)
-                            lower_old += move
+                            lower_old += -1 * move
+                        # elif (lower_old + -2 * move) % 12 in notes and validIntervals(upper_old, (lower_old + -2 * move)):
+                        #     MyMIDI.addNote(lower, channel, lower_old + -2 * move, time, duration, volume)
+                        #     lower_old += -2 * move
+                        # elif (lower_old + -3 * move) % 12 in notes and validIntervals(upper_old, (lower_old + -3 * move)):
+                        #     MyMIDI.addNote(lower, channel, lower_old + -3 * move, time, duration, volume)
+                        #     lower_old += -3 * move
                         else:
                             MyMIDI.addNote(lower, channel, lower_old + -2 * move, time, duration, volume)
-                            lower_old += 2 * move
+                            lower_old += -2 * move
                     else:
-                        if 64 - lower_old > lower_old - 36:
+                        if 60 - lower_old > lower_old - 36:
                             move = 1
                         else:
                             move = -1
