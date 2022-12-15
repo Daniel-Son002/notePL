@@ -2,7 +2,7 @@ from mido import MidiFile
 import mido
 
 
-mid = MidiFile('ValidCounterpoint.mid', clip=True)
+mid = MidiFile('InvalidCounterpoint.mid', clip=True)
 
 track1 = []
 track2 = []
