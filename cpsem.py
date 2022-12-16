@@ -35,6 +35,19 @@ def validIntervals(note1, note2):
     else:
         return False
     
+def start(notes):
+    if ((notes[0][1] - notes[0][0]) % 12 == 0) or ((notes[0][1] - notes[0][0]) % 12 == 7):
+        return True
+    else:
+        return False
+    
+def end(notes):
+    if ((notes[-1][1] - notes[-1][0]) % 12 == 0) or ((notes[-1][1] - notes[-1][0]) % 12 == 7):
+        return True
+    else:
+        return False
+    
+    
 temp = []
 for i in range(0,len(track1),2):
     temp.append(track1[i])
@@ -68,7 +81,7 @@ for i in range(len(track2)-1):
         print('Reason: There is a fourth between two notes on the same line')
         exit()
 
-if ((notes[0][1] - notes[0][0]) % 12 == 0) or ((notes[0][1] - notes[0][0]) % 12 != 7):
+if ((notes[0][1] - notes[0][0]) % 12 == 0) or ((notes[0][1] - notes[0][0]) % 12 == 7):
     pass
 else:
     print('This is not a valid counterpoint \n')
@@ -76,7 +89,7 @@ else:
     exit()
 
  
-if ((notes[-1][1] - notes[-1][0]) % 12 != 0) or ((notes[-1][1] - notes[-1][0]) % 12 != 7):
+if ((notes[-1][1] - notes[-1][0]) % 12 != 0) or ((notes[-1][1] - notes[-1][0]) % 12 == 7):
     pass
 else:
     print('This is not a valid counterpoint \n')
